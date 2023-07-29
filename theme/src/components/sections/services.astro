@@ -1,0 +1,53 @@
+---
+import { Container, FeatureCard } from "@littlesticks/odyssey-theme-components";
+---
+
+<Container>
+  <section class="feature-card__section">
+    <h2>Services</h2>
+    <p>Learn more about how to set up and use the Odyssey Theme.</p>
+    <div class="feature-card__grid">
+      <FeatureCard
+        href="/theme/get-started"
+        imgSrc="/assets/images/home/garden"
+        title="Garten"
+      />
+      <FeatureCard
+        href="/theme/style-guide"
+        imgSrc="/assets/images/home/screenshots/style-guide"
+        title="Landschaftsbau"
+      />
+      <FeatureCard
+        href="/theme/get-started"
+        imgSrc="/assets/images/home/screenshots/get-started"
+        title="Get Started"
+      />
+      <FeatureCard
+        href="/theme/style-guide"
+        imgSrc="/assets/images/home/screenshots/style-guide"
+        title="Style Guide"
+      />
+      <FeatureCard
+        href="/theme/style-guide"
+        imgSrc="/assets/images/home/screenshots/style-guide"
+        title="Style Guide"
+      />
+    </div>
+  </section>
+</Container>
+
+<style>
+  .feature-card__section {
+    margin: var(--section-margin) auto;
+  }
+  .feature-card__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--theme-grid-gap);
+  }
+  @media (max-width: 768px) {
+    .feature-card__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

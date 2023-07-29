@@ -2,11 +2,11 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import {
-	classicThemeIcon,
-	darkThemeIcon,
-	earthThemeIcon,
-	blueThemeIcon,
-	orangeThemeIcon,
+  classicThemeIcon,
+  darkThemeIcon,
+  earthThemeIcon,
+  blueThemeIcon,
+  orangeThemeIcon,
 } from './icons';
 
 const themes = [
@@ -39,8 +39,8 @@ const themes = [
 
 @customElement('theme-switcher')
 export class ThemeSwitcher extends LitElement {
-	static styles = [
-		css`
+  static styles = [
+    css`
 			:host {
 				display: block;
 			}
@@ -77,71 +77,74 @@ export class ThemeSwitcher extends LitElement {
 				font-size: var(--font-size-sm);
 			}
 		`,
-	];
+  ];
 
-	// set the _doc element
-	private _doc = document.firstElementChild;
+  // set the _doc element
+  private _doc = document.firstElementChild;
 
-	@property({ type: String })
-	theme: string | null = null;
+  @property({ type: String })
+  theme: string | null = null;
 
-	private _getCurrentTheme() {
-		// check for a local storage theme first
-		const localStorageTheme = localStorage.getItem('theme');
-		if (localStorageTheme !== null) {
-			this._setTheme(localStorageTheme);
-		} else {
-      this._setTheme('default');
-    }
-	}
+  private _getCurrentTheme() {
+    // check for a local storage theme first
+    // const localStorageTheme = localStorage.getItem('theme');
+    // if (localStorageTheme !== null) {
+    //   this._setTheme(localStorageTheme);
+    // } else {
+    // }
+    this._setTheme('earth');
+  }
 
   firstUpdated() {
     this._getCurrentTheme();
   }
 
-	private _setTheme(theme) {
-		this._doc.setAttribute('data-theme', theme);
+  private _setTheme(theme) {
+    theme = 'earth'
+
+    console.log(theme)
+    this._doc.setAttribute('data-theme', theme);
 
     const _heroImage = document.querySelector('#home-hero-image') as HTMLImageElement;
-		if (theme === 'default') {
-			_heroImage.src = '/assets/images/home/classic-hero.jpg';
-		}
-		if (theme === 'dark') {
-			_heroImage.src = '/assets/images/home/dark-hero.jpg';
-		}
-		if (theme === 'earth') {
-			_heroImage.src = '/assets/images/home/earth-hero.jpg';
-		}
-		if (theme === 'ocean') {
-			_heroImage.src = '/assets/images/home/ocean-hero.jpg';
-		}
-		if (theme === 'sand') {
-			_heroImage.src = '/assets/images/home/sand-hero.jpg';
-		}
-		localStorage.setItem('theme', theme);
-		this.theme = theme;
-	}
+    if (theme === 'default') {
+      _heroImage.src = '/assets/images/home/classic-hero.jpg';
+    }
+    if (theme === 'dark') {
+      _heroImage.src = '/assets/images/home/dark-hero.jpg';
+    }
+    if (theme === 'earth') {
+      _heroImage.src = '/assets/images/home/earth-hero.jpg';
+    }
+    if (theme === 'ocean') {
+      _heroImage.src = '/assets/images/home/ocean-hero.jpg';
+    }
+    if (theme === 'sand') {
+      _heroImage.src = '/assets/images/home/sand-hero.jpg';
+    }
+    localStorage.setItem('theme', theme);
+    this.theme = theme;
+  }
 
-	render() {
-    const themeButtons = html`${themes.map((theme) => {
-      return html`
-      <div class="theme-select__container">
-        <button
-          @click=${() => this._setTheme(theme.name)}
-          ?active=${this.theme === theme.name}
-          title=${`Enable ${theme.label} Theme`}
-        >
-          ${theme.icon}
-        </button>
-        <p>${theme.label}</p>
-        </div>
-      `
-    })}`
+  // render() {
+  //   const themeButtons = html`${themes.map((theme) => {
+  //     return html`
+  //     <div class="theme-select__container">
+  //       <button
+  //         @click=${() => this._setTheme(theme.name)}
+  //         ?active=${this.theme === theme.name}
+  //         title=${`Enable ${theme.label} Theme`}
+  //       >
+  //         ${theme.icon}
+  //       </button>
+  //       <p>${theme.label}</p>
+  //       </div>
+  //     `
+  //   })}`
 
-		return html`
-			<div class="theme-switcher__container">
-				${themeButtons}
-			</div>
-		`;
-	}
+  //   return html`
+  // 		<div class="theme-switcher__container">
+  // 			${themeButtons}
+  // 		</div>
+  // 	`;
+  // }
 }

@@ -1,0 +1,25 @@
+---
+// import { TextSection, Container } from "@littlesticks/odyssey-theme-components";
+import HeroSection from "../../components/sections/heros/HeroSection.astro";
+
+const { textPosition = "center" } = Astro.props;
+---
+
+<HeroSection {textPosition} order="reverse">
+  <div slot="text-container">
+    <h2>About</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, nisi
+      recusandae? Quidem dignissimos nobis, dicta unde, aperiam voluptate autem
+      iste reprehenderit, aliquam ducimus illo ea ipsum qui animi sequi.
+      Numquam.
+    </p>
+  </div>
+  <picture slot="image-container">
+    <img
+      src="/assets/images/person.jpeg"
+      alt="A-Galabau founder"
+      id="home-hero-image"
+    />
+  </picture>
+</HeroSection>
