@@ -16,12 +16,14 @@ const { seo } = Astro.props as Props;
 ---
 
 <Layout {seo}>
-  <Header rightMenu navData={nav} slot="header">
-    <span slot="logo">
-      <Logo />
-    </span>
-    <Button slot="action-item" href="/company/contact">Contact us!</Button>
-  </Header>
+  <div id="headerWrapper">
+    <Header rightMenu navData={nav} slot="header">
+      <span slot="logo">
+        <Logo />
+      </span>
+      <Button slot="action-item" href="/company/contact">Contact us!</Button>
+    </Header>
+  </div>
   <div id="page">
     <slot />
   </div>
@@ -39,7 +41,16 @@ const { seo } = Astro.props as Props;
 </Layout>
 
 <style>
-  #odysseyNavHeader {
-    background-color: red !important;
+  #headerWrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @media (max-width: 610px) {
+    /* CSS styles for mobile devices go here */
+    #headerWrapper {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 </style>
